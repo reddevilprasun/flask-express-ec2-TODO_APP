@@ -20,7 +20,7 @@ if (cluster.isMaster) {
   dotenv.config();
 
   const PORT = process.env.PORT || 3000;
-  const API_URL = process.env.BACKEND_URL;
+  const API_URL = process.env.BACKEND_URL; // http://localhost:5000 (flask server)
 
   app.set("view engine", "ejs");
   app.use(express.static("public"));
