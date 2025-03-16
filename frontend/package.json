@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node scale-server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-frontend
+  namespace: todo
+spec:
+  selector:
+    matchLabels:
+      app: todo-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: todo-frontend
+    spec:
+      containers:
+      - name: todo-frontend
+        image: docker.io/devprasun/todo-frontend:latest
+        env:
+        - name: BACKEND_URL
+          value: http://backend-service:4000
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-frontend
+  namespace: todo
+spec:
+  selector:
+    app: todo-frontend
+  ports:
+  - port: 5000
+    targetPort: 3000
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongodb-secret
+  namespace: todo
+type: Opaque
+data:
+  mongodb-url: bW9uZ29kYitzcnY6Ly9wcmFzdW5wZXJzb25hbDpwWFpOZjhqcWtxM2xyOVJoQHByYXN1bnBlcnNvbmFsLnF6ZTJuLm1vbmdvZGIubmV0Lz9yZXRyeVdyaXRlcz10cnVlJnc9bWFqb3JpdHk=
