@@ -62,7 +62,7 @@ resource "aws_instance" "web-todo" {
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.web-todo.name]
   user_data = file("user_data.sh")
-  key_name = "todo-key"
+  key_name = "web-todo-key"
 
   tags = {
     Name = "Flask-Express-Todo"

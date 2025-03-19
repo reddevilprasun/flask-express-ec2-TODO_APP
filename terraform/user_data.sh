@@ -28,7 +28,7 @@ sudo touch .env
 echo "MONGO_URL=************" | sudo tee .env
 pip3 install -r requirements.txt
 
-nohup gunicorn --workers 3 --bind 0.0.0.0:5000 app:app > flask.log 2>&1 &
+nohup gunicorn --bind 0.0.0.0:5000 app:app > flask.log 2>&1 &
 
 
 cd ../frontend
