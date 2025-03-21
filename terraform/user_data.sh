@@ -25,7 +25,7 @@ sudo apt install -y python3.12-venv
 python3 -m venv venv
 source venv/bin/activate
 sudo touch .env
-echo "MONGO_URL=************" | sudo tee .env
+echo "MONGO_URL=mongodb+srv://prasunpersonal:*********@prasunpersonal.qze2n.mongodb.net/?retryWrites=true&w=majority" | sudo tee .env
 pip3 install -r requirements.txt
 
 nohup gunicorn --bind 0.0.0.0:5000 app:app > flask.log 2>&1 &
@@ -38,5 +38,5 @@ sudo npm install
 
 nohup npm start > react.log 2>&1 &
 
-sudo chmod 777 /home/ubuntu/frontend/react.log
-sudo chmod 777 /home/ubuntu/backend/flask.log
+sudo chmod 777 /home/ubuntu/flask-express-ec2-TODO_APP/frontend/react.log
+sudo chmod 777 /home/ubuntu/flask-express-ec2-TODO_APP/backend/flask.log
