@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "flask" {
       "environment" : [
         {
           "name": "MONGO_URL",
-          "value": "mongodb+srv://prasunpersonal:*********@prasunpersonal.qze2n.mongodb.net/?retryWrites=true&w=majority"
+          "value": "mongodb+srv://connection<string>"
         }
       ]
     }
