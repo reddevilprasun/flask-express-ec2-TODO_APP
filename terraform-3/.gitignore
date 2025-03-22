@@ -1,0 +1,26 @@
+# git ignore for terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+.terraform.lock.hcl
+.terraformrc
+terraform.rc
+terraform-provider-aws
+terraform-provider-azurerm
+terraform-provider-google
+terraform-provider-kubernetes
+terraform-provider-null
+terraform-provider-template
+terraform-provider-tls
+terraform-provider-vault
+terraform-provider-local
+terraform-provider-external
+terraform-provider-http
+terraform-provider-archive
+terraform-provider-random
+terraform-provider-ignition
+terraform-provider-helm
+terraform-provider-k8s
+terraform-provider-kafka
+terraform-provider-kong
