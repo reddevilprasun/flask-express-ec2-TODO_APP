@@ -18,7 +18,14 @@ pipeline{
         dir('backend') {
           // Install Python virtual environment package and set up virtual environment
           sh 'python3 -m venv venv'
-          sh '. venv/bin/activate && pip3 install -r requirements.txt'
+          
+          // Activate virtual environment and install requirements with the appropriate flag
+          sh '''
+            . venv/bin/activate
+            pip3 install --break-system-packages -r requirements.txt
+          '''
+          
+          // Set environment variables
           sh 'echo "MONGO_URL=$MONGO_URL" > .env'
 
           // Restart flask with pm2 or start if not running
