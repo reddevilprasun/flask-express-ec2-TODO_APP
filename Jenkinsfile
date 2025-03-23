@@ -8,7 +8,7 @@ pipeline{
     // Clone the repository
     stage('Clone repository') {
       steps {
-        git 'https://github.com/reddevilprasun/flask-express-ec2-TODO_APP.git'
+         git branch: 'main', url: 'https://github.com/reddevilprasun/flask-express-ec2-TODO_APP.git'
       }
     }
 
