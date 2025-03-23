@@ -2,7 +2,7 @@ pipeline{
   agent any
   environment {
     BACKEND_URL = "http://localhost:5000"
-    MONGO_URL = credentials('mongo_url')
+    MONGO_URL = credentials('mongo-url')
   }
   stages {
     // Clone the repository
@@ -20,7 +20,7 @@ pipeline{
           sh 'echo "MONGO_URL=$MONGO_URL" > .env'
 
           // Restart flask with pm2 or start if not running
-          sh 'pm2 restart flask-backend || pm2 start gunicorn --name flask-backend -- gunicorn --bind 0.0.0.0:5000 app:app'
+          sh 'pm2 restart flask-backend || pm2 start "flask run --host=0.0.0.0 --port=5000" --name flask-backend'
         }
       }
     }
@@ -42,8 +42,6 @@ pipeline{
 
   post {
     always {
-      // Save the pm2 logs
-      sh 'pm2 save'
       echo 'Deployment completed'
     }
   }
