@@ -29,7 +29,7 @@ pipeline{
           sh 'echo "MONGO_URL=$MONGO_URL" > .env'
 
           // Restart flask with pm2 or start if not running
-          sh 'pm2 restart flask-backend'
+          sh 'sudo -u ubuntu pm2 restart flask-backend'
         }
       }
     }
@@ -42,7 +42,7 @@ pipeline{
           sh 'echo "BACKEND_URL=$BACKEND_URL" > .env'
 
           // Restart express with pm2 or start if not running
-          sh 'pm2 restart express-frontend'
+          sh 'sudo -u ubuntu pm2 restart express-frontend'
         }
       }
     }
