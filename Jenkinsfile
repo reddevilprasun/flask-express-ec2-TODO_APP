@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
   agent any
   environment {
     BACKEND_URL = "http://localhost:5000"
@@ -29,7 +29,7 @@ pipeline{
           sh 'echo "MONGO_URL=$MONGO_URL" > .env'
 
           // Restart flask with pm2 or start if not running
-          sh 'sudo -u ubuntu pm2 restart flask-backend'
+          sh 'sudo -u ubuntu pm2 restart flask-backend || sudo -u ubuntu pm2 start flask-backend'
         }
       }
     }
@@ -41,7 +41,7 @@ pipeline{
           sh 'npm install'
           sh 'echo "BACKEND_URL=$BACKEND_URL" > .env'
           // Restart express with pm2 or start if not running
-          sh 'sudo -u ubuntu pm2 restart express-frontend'
+          sh 'sudo -u ubuntu pm2 restart express-frontend || sudo -u ubuntu pm2 start express-frontend'
         }
       }
     }
