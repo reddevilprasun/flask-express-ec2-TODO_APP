@@ -16,6 +16,7 @@ pipeline {
     stage('Setup flask backend') {
       steps {
         dir('backend') {
+          sh 'apt install -y python3.12-venv'
           // Install Python virtual environment package and set up virtual environment
           sh 'python3 -m venv venv'
           
