@@ -16,7 +16,10 @@ pipeline{
     stage('Setup flask backend') {
       steps {
         dir('backend') {
-          sh 'pip3 install -r requirements.txt'
+          // Install Python virtual environment package and set up virtual environment
+          sh 'sudo apt install -y python3.12-venv'
+          sh 'python3 -m venv venv'
+          sh '. venv/bin/activate && pip3 install -r requirements.txt'
           sh 'echo "MONGO_URL=$MONGO_URL" > .env'
 
           // Restart flask with pm2 or start if not running
@@ -29,7 +32,7 @@ pipeline{
     stage('Setup express frontend') {
       steps {
         dir('frontend') {
-          sh 'npm install'
+          sh 'sudo npm install'
           sh 'echo "BACKEND_URL=$BACKEND_URL" > .env'
 
           // Restart express with pm2 or start if not running
