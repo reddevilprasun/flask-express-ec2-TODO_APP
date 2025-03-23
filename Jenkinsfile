@@ -17,7 +17,6 @@ pipeline{
       steps {
         dir('backend') {
           // Install Python virtual environment package and set up virtual environment
-          sh 'sudo apt install -y python3.12-venv'
           sh 'python3 -m venv venv'
           sh '. venv/bin/activate && pip3 install -r requirements.txt'
           sh 'echo "MONGO_URL=$MONGO_URL" > .env'
@@ -32,7 +31,7 @@ pipeline{
     stage('Setup express frontend') {
       steps {
         dir('frontend') {
-          sh 'sudo npm install'
+          sh 'npm install'
           sh 'echo "BACKEND_URL=$BACKEND_URL" > .env'
 
           // Restart express with pm2 or start if not running
