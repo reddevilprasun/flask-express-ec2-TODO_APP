@@ -40,7 +40,6 @@ pipeline{
         dir('frontend') {
           sh 'npm install'
           sh 'echo "BACKEND_URL=$BACKEND_URL" > .env'
-
           // Restart express with pm2 or start if not running
           sh 'sudo -u ubuntu pm2 restart express-frontend'
         }
